@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Reservas</title>
+</head>
+<body>
+    <h1>Carrito de Reservas</h1>
+
+    <!-- Mostrar habitaciones seleccionadas -->
+    <ul>
+        <li th:if="${habitacionSeleccionada}">
+            <span th:text="${habitacionSeleccionada.numero}"></span>
+            <span th:text="${habitacionSeleccionada.tipo}"></span>
+            <span th:text="${habitacionSeleccionada.precio}"></span>
+        </li>
+    </ul>
+
+    <!-- Detalles de la reserva -->
+    <form th:action="@{/reservas/confirmarReserva}" th:object="${reserva}" method="post">
+        <label for="fechaInicio">Fecha de Inicio:</label>
+        <input type="date" id="fechaInicio" name="fechaInicio" th:field="*{fechaInicio}" required>
+
+        <label for="fechaFin">Fecha de Fin:</label>
+        <input type="date" id="fechaFin" name="fechaFin" th:field="*{fechaFin}" required>
+
+        <!-- Otros campos para los detalles de la reserva -->
+
+        <button type="submit">Confirmar Reserva</button>
+    </form>
+
+    <!-- Botón para volver al catálogo -->
+    <a href="/reservas/catalogo">Volver al Catálogo</a>
+</body>
+</html>

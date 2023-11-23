@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Reserva</title>
+</head>
+<body>
+    <h1>Confirmar Reserva</h1>
+
+    <!-- Detalles de la reserva -->
+    <p>Fecha de Inicio: <span th:text="${reserva.fechaInicio}"></span></p>
+    <p>Fecha de Fin: <span th:text="${reserva.fechaFin}"></span></p>
+    <!-- Otros campos para los detalles de la reserva -->
+
+    <!-- Monto a pagar -->
+    <p>Monto a Pagar: <span th:text="${reserva.total}"></span></p>
+
+    <!-- Botón para confirmar la reserva -->
+    <form th:action="@{/reservas/confirmarReserva}" th:object="${reserva}" method="post">
+        <button type="submit">Confirmar Reserva</button>
+    </form>
+
+    <!-- Volver al carrito o catálogo -->
+    <a href="/reservas/carrito">Volver al Carrito</a>
+    <a href="/reservas/catalogo">Volver al Catálogo</a>
+</body>
+</html>
